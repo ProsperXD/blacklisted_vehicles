@@ -16,7 +16,7 @@ AddEventHandler('entityCreating', function(entity)
         local src = NetworkGetEntityOwner(entity)
         local model = GetEntityModel(entity)
         local vehicle = GetHashKey(k)
-        if model == vehicle and not IsPlayerAceAllowed(src, "aEXblacklisted.cars") then
+        if model == vehicle and not IsPlayerAceAllowed(src, "EXblacklisted.cars") then
             reason = "blacklisted Car: " ..v.label.. " "
             if not sent then
 	local xPlayer = ESX.GetPlayerFromId(src)
