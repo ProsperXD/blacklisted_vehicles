@@ -3,7 +3,7 @@ sent = false
 EX = {}
 EX.BlacklistedVehicles = {
     ['rhino'] = {label = 'Tank'},
-    
+    ['bmx'] = {label = "Bmx"}
 }
 
 ESX = nil
@@ -15,14 +15,8 @@ AddEventHandler('entityCreating', function(entity)
     for k, v in pairs(EX.BlacklistedVehicles) do
         local src = NetworkGetEntityOwner(entity)
         local model = GetEntityModel(entity)
-        local amount = GetEntityPopulationType(entity)
         local vehicle = GetHashKey(k)
-        if src == nil then
-            CancelEvent()
-        elseif amount == v.spawnlimit then
-            CancelEvent()
-        end
-        if model == vehicle and not IsPlayerAceAllowed(src, "EXblacklisted.cars") then
+        if model == vehicle and not IsPlayerAceAllowed(src, "aEXblacklisted.cars") then
             reason = "blacklisted Car: " ..v.label.. " "
             if not sent then
 	local xPlayer = ESX.GetPlayerFromId(src)
